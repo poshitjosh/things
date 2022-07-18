@@ -1,4 +1,3 @@
-Import-Module -Name MSAL.PS
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
