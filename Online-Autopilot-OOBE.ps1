@@ -50,6 +50,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     if($x = 'Development Baseline - DEV') {$grouptag = 'DEV'}
     if($x = 'Conference Room - CORP-CONF') {$grouptag = 'CORP-CONF'}
     
-    
+    Install-Module -Name MSAL.PS 
+    Connect-MSGraph
     Get-WindowsAutoPilotInfo -Online -GroupTag $grouptag
 }
