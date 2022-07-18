@@ -31,7 +31,7 @@ $form.Controls.Add($label)
 $listBox = New-Object System.Windows.Forms.ListBox
 $listBox.Location = New-Object System.Drawing.Point(10,50)
 $listBox.Size = New-Object System.Drawing.Size(260,30)
-$listBox.Height = 60
+$listBox.Height = 80
 
 [void] $listBox.Items.Add('Corporate Baseline - CORP')
 [void] $listBox.Items.Add('Development Baseline - DEV')
@@ -49,6 +49,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     if($x = 'Corporate Baseline - CORP') {$grouptag = 'CORP'}
     if($x = 'Development Baseline - DEV') {$grouptag = 'DEV'}
     if($x = 'Conference Room - CORP-CONF') {$grouptag = 'CORP-CONF'}
-
+    
+    
     Get-WindowsAutoPilotInfo -Online -GroupTag $grouptag
 }
