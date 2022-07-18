@@ -4,11 +4,12 @@ function Show-Menu
         [string]$Title = 'Autopilot Group Tag'
     )
     Clear-Host
-    Write-Host "================ Autopilot Group Tag ================`r`r`r"
-    
+    Write-Host "================ Autopilot Group Tag ================"
+    Write-Host "`r`r"
     Write-Host "1: Corporate Baseline - CORP"
     Write-Host "2: Development Baseline - DEV"
     Write-Host "3: Conference Room - CORP-CONF"
+    Write-Host "`r`r"
     Write-Host "Q: Press 'Q' to quit."
 }
 
