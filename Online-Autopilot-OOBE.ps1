@@ -1,3 +1,5 @@
+Import-Module -Name MSAL.PS
+
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
@@ -49,8 +51,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     if($x = 'Corporate Baseline - CORP') {$grouptag = 'CORP'}
     if($x = 'Development Baseline - DEV') {$grouptag = 'DEV'}
     if($x = 'Conference Room - CORP-CONF') {$grouptag = 'CORP-CONF'}
-    
-    Install-Module -Name MSAL.PS 
+     
     Connect-MSGraph
     Get-WindowsAutoPilotInfo -Online -GroupTag $grouptag
 }
