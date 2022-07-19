@@ -1,6 +1,9 @@
-$cmd = `
-@'
 cmd /c start powershell -Command {
+
+Import-Module -Name MSAL.PS -Force
+Install-Module -Name Microsoft.Graph.Intune
+Install-Script -Name Get-WindowsAutoPilotInfo
+
 function Show-Menu
 {
     param (
@@ -33,6 +36,3 @@ Connect-MSGraph
 Get-WindowsAutoPilotInfo -Online -GroupTag $grouptag
 }
 }
-'@
-
-invoke-expression -Command $cmd
