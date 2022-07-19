@@ -1,36 +1,38 @@
+$cmd = `
+@'
+cmd /c start powershell -Command {
 function Show-Menu
 {
     param (
-        [string]$Title = 'Autopilot Group Tag'
+        [string]$Title = "Autopilot Group Tag"
     )
     Clear-Host
-    Write-Host "================ Autopilot Group Tag ================"
-    Write-Host "`r`r"
-    Write-Host "1: Corporate Baseline - CORP"
-    Write-Host "2: Development Baseline - DEV"
-    Write-Host "3: Conference Room - CORP-CONF"
-    Write-Host "`r`r"
-    Write-Host "Q: Press 'Q' to quit."
+    [console]::WriteLine("  ================ Autopilot Group Tag ================")
+    [console]::WriteLine("  1: Corporate Baseline - CORP" )
+    [console]::WriteLine("  2: Development Baseline - DEV")
+    [console]::WriteLine("  3: Conference Room - CORP-CONF")
+    [console]::WriteLine("")
+    [console]::WriteLine("  Q: Press Q to quit.")
+    Write-Host ""
 }
 
-Show-Menu –Title 'Choose Autopilot Group Tag'
+Show-Menu –Title "Choose Autopilot Group Tag"
 $selection = Read-Host "Please make a selection"
 
 switch ($selection)
 {
-     '1' {
-         $grouptag = 'CORP'
-     } '2' {
-         $grouptag = 'DEV'
-     } '3' {
-         $grouptag = 'CORP-CONF'
-     } 'q' {
-         return
-     }
- }
+     '1' { $grouptag = "CORP"} 
+     '2' { $grouptag = "DEV"}
+     '3' { $grouptag = "CORP-CONF"} 
+     'q' { return }
+}
 
-If ($selection -eq 'q') {}
+If ($selection -eq 'q') { exit }
 Else {
 Connect-MSGraph
 Get-WindowsAutoPilotInfo -Online -GroupTag $grouptag
 }
+}
+'@
+
+invoke-expression -Command $cmd
